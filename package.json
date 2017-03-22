@@ -1,0 +1,21 @@
+{
+  "name": "webpack_workflow",
+  "version": "1.0.0",
+  "description": "Workflow template for modular front end without react",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --env development",
+    "build": "webpack --env production"
+  },
+  "author": "Tristan MacDonald",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.18.0",
+    "eslint-config-airbnb-base": "^11.1.1",
+    "eslint-plugin-import": "^2.2.0",
+    "html-webpack-plugin": "^2.28.0",
+    "nodemon": "^1.11.0",
+    "webpack": "^2.3.1",
+    "webpack-dev-server": "^2.4.2"
+  }
+}
