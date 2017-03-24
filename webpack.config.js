@@ -19,6 +19,10 @@ const commonConfig = merge([
       path: PATHS.build,
       filename: 'js/[name].js',
     },
+    /* htmlwebpackplugin is where single html file gets outputted, 
+    need refactor to multipage output with chunks 
+    vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+    */
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Webpack workflow',
@@ -27,6 +31,7 @@ const commonConfig = merge([
       }),
     ],
   },
+  parts.loadJavaScript({ include: PATHS.app }),
 ]);
 
 const productionConfig = merge([
@@ -35,15 +40,13 @@ const productionConfig = merge([
   parts.purifyCSS({
     basePath: PATHS.app,
     paths: glob.sync(path.join(__dirname, 'app/templates/*.html')),
-    resolveExtensions: ['.html', '.js'],
   }),
 ]);
 
 const developmentConfig = merge([
   parts.devServer({
     // Customize host/port here if needed
-    host: process.env.HOST,
-    port: process.env.PORT,
+   
   }),
 
   parts.loadCSS(),

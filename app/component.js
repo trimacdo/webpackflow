@@ -1,7 +1,7 @@
 export default (text = 'Hello To you') => {
   const element = document.createElement('div');
-
-  element.innerHTML = text;
+  const hello = "hello";
+  element.innerHTML = text + `${hello} my name is LOL`;
 
   return element;
 };
