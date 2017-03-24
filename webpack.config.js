@@ -1,4 +1,5 @@
 const path = require('path');
+const glob = require('glob');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 
@@ -21,7 +22,7 @@ const commonConfig = merge([
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Webpack workflow',
-        filename: 'templates/[name].[ext]',
+        filename: 'templates/webpack.html',
         template: 'app/templates/webpack.html',
       }),
     ],
@@ -29,8 +30,13 @@ const commonConfig = merge([
 ]);
 
 const productionConfig = merge([
-  parts.extractCSS({ use: ['css-loader', 'sass-loader'] }),
+  parts.extractCSS({ use: ['css-loader', 'sass-loader', parts.autoprefix()] }),
 
+  parts.purifyCSS({
+    basePath: PATHS.app,
+    paths: glob.sync(path.join(__dirname, 'app/templates/*.html')),
+    resolveExtensions: ['.html', '.js'],
+  }),
 ]);
 
 const developmentConfig = merge([

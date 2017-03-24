@@ -1,2 +1,7 @@
 html {
-  background-color: red; }
+  background-color: red;
+}
+
+.hello {
+  margin: 0 0 0 1px;
+}
