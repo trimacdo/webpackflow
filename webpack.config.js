@@ -16,17 +16,21 @@ const commonConfig = merge([
     },
     output: {
       path: PATHS.build,
-      filename: '[name].js',
+      filename: 'js/[name].js',
     },
     plugins: [
       new HtmlWebpackPlugin({
-        title: 'Webpack demo',
+        title: 'Webpack workflow',
+        filename: 'templates/[name].[ext]',
+        template: 'app/templates/webpack.html',
       }),
     ],
   },
 ]);
 
 const productionConfig = merge([
+  parts.extractCSS({ use: ['css-loader', 'sass-loader'] }),
+
 ]);
 
 const developmentConfig = merge([
@@ -35,6 +39,10 @@ const developmentConfig = merge([
     host: process.env.HOST,
     port: process.env.PORT,
   }),
+
+  parts.loadCSS(),
+
+
 ]);
 
 module.exports = (env) => {
