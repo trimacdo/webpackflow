@@ -31,13 +31,11 @@ const commonConfig = merge([
       }),
     ],
   },
-  parts.loadJavaScript({ include: PATHS.app }),
+  parts.loadJavaScript({ include: PATHS.build }),
 ]);
 
 const productionConfig = merge([
- 
-
-  parts.extractCSS({ use: ['css-loader', parts.autoprefix(), 'sass-loader'] }),
+  parts.extractCSS({ use: ['css-loader',parts.autoprefix(), 'sass-loader'] }),
   
   parts.purifyCSS({
     paths: glob.sync(path.join(__dirname, 'app/templates/*.html')),
@@ -45,13 +43,9 @@ const productionConfig = merge([
 ]);
 
 const developmentConfig = merge([
-  parts.devServer({
-    // Customize host/port here if needed
-   
-  }),
-
-  parts.loadCSS(),
-
+  parts.devServer(),
+  
+  parts.loadCSS({ use: ['css-loader', parts.autoprefix(), 'sass-loader'] }),
 
 ]);
 

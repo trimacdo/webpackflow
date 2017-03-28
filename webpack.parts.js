@@ -11,6 +11,7 @@ exports.devServer = ({ host, port } = {}) => ({
       errors: true,
       warnings: true,
     },
+    watchContentBase: true,
     // --content-base in package.json sets up files to be served from build/
   },
 });
@@ -39,15 +40,20 @@ exports.loadJavaScript = ({ include, exclude }) => ({
 
 exports.loadCSS = ({ include, exclude } = {}) => ({
   module: {
-    rules: [
-      {
-        test: /\.s[ac]ss$/,
-        include,
-        exclude,
-
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-      },
-    ],
+     rules: [{
+          test: /\.s[ac]ss$/,
+          use: [{
+              loader: "style-loader"
+          }, {
+              loader: "css-loader", options: {
+                  sourceMap: true
+              }
+          }, {
+              loader: "sass-loader", options: {
+                  sourceMap: true
+              }
+          }]
+        }]
   },
 });
 

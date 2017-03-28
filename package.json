@@ -4,7 +4,7 @@
   "description": "Workflow template for modular front end without react",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --env development --content-base build/ --open",
+    "start": "webpack-dev-server --env development --open --content-base app/",
     "build": "webpack --env production"
   },
   "author": "Tristan MacDonald",
