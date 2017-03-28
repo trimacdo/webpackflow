@@ -35,10 +35,11 @@ const commonConfig = merge([
 ]);
 
 const productionConfig = merge([
-  parts.extractCSS({ use: ['css-loader', 'sass-loader', parts.autoprefix()] }),
+ 
 
+  parts.extractCSS({ use: ['css-loader', parts.autoprefix(), 'sass-loader'] }),
+  
   parts.purifyCSS({
-    basePath: PATHS.app,
     paths: glob.sync(path.join(__dirname, 'app/templates/*.html')),
   }),
 ]);

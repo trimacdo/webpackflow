@@ -73,12 +73,11 @@
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ((text = 'Hello To you') => {
   const element = document.createElement('div');
-
-  element.innerHTML = text;
+  const hello = "hello";
+  element.innerHTML = text + `${hello} my name is LOL`;
 
   return element;
 });
-
 
 /***/ }),
 /* 1 */
@@ -98,9 +97,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
 document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__component__["a" /* default */])());
-
 
 /***/ })
 /******/ ]);

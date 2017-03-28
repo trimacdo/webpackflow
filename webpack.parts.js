@@ -86,13 +86,12 @@ exports.autoprefix = () => ({
 });
 
 
-exports.purifyCSS = ({ basePath, paths }) => ({
+exports.purifyCSS = ({ paths }) => ({
   plugins: [
     new PurifyCSSPlugin({
-      basePath,
       paths,
-      resolveExtensions: ['.html', '.js'],
-      minify: true,
+      moduleExtensions: ['.html', '.js'],
+      minimize: true,
      }),
   ],
 });
